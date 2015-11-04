@@ -1,0 +1,11 @@
+[user]
+	email = andrew.chuanye.chen@gmail.com
+	name = Andrew Chen
+[diff]
+	tool = kompare
+[merge]
+	tool = kdiff3
+[push]
+	default = current
+[core]
+	excludesfile = ~/.gitignore

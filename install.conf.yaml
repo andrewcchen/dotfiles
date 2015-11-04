@@ -3,4 +3,5 @@
 - link:
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
+    ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
