@@ -22,9 +22,11 @@ set incsearch
 set hlsearch
 nnoremap <Leader><Space> :nohlsearch<CR>
 
-highlight ExtraWhitespace ctermbg=red
-match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
-nnoremap <Leader>wf :match ExtraWhitespace //<CR>
+if exists("less_mode") == 0
+  highlight ExtraWhitespace ctermbg=red
+  match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
+  nnoremap <Leader>wf :match ExtraWhitespace // <Bar> :unmap <Leader>wf<CR>
+endif
 
 " highlight the 81th column on long lines
 2mat ErrorMsg '\%81v.'
@@ -33,5 +35,5 @@ cmap w!! w !sudo tee > /dev/null %
 
 nnoremap <Leader>in :.-1read ~/Templates/
 
-call Preamble#Enable('c,cpp,py')
+call Preamble#Enable('c,cpp,python')
 nnoremap <Leader>fc :call Preamble#Fold()<CR>
