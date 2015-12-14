@@ -9,3 +9,4 @@
     ~/.vimrc: vim/vimrc
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
+    ~/.makepkg.conf: makepkg.conf
