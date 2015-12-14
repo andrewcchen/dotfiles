@@ -55,5 +55,6 @@ let g:easytags_auto_highlight = 0
 let g:easytags_events = ['BufWritePost']
 nnoremap <Leader>tu :UpdateTags 
 nnoremap <Leader>th :HighlightTags<CR>
+nnoremap <C-]> g<C-]>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
