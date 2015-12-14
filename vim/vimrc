@@ -9,6 +9,14 @@ set autoindent
 set cindent
 set cinoptions+=:0 " do not indent 'case x:'
 
+set hidden
+set wildmenu
+set showcmd
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
@@ -17,6 +25,8 @@ syntax on
 filetype plugin indent on
 
 let mapleader=","
+
+set pastetoggle=<C-p>
 
 set incsearch
 set hlsearch
@@ -37,6 +47,8 @@ nnoremap <Leader>in :.-1read ~/Templates/
 
 call Preamble#Enable('c,cpp,python')
 nnoremap <Leader>fc :call Preamble#Fold()<CR>
+nnoremap <Leader>fo zR
+set foldmethod=marker
 
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
