@@ -1,6 +1,10 @@
 - clean: ['~']
 
 - link:
+    ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
     ~/.gitconfig: gitconfig
