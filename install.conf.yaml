@@ -1,15 +1,15 @@
 - clean: ['~', '~/bin']
 
 - link:
-    ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
-    ~/.vim: vim/
-    ~/.vimrc: vim/vimrc
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.makepkg.conf: makepkg.conf
+    ~/.vim: vim/
+    ~/.vimrc: vim/vimrc
+    ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
 
     ~/bin/openocd: bin/openocd
     ~/bin/openocd.stm32f1: bin/openocd
