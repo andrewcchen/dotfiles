@@ -5,7 +5,7 @@ case $device in
 $0)
 	exec /usr/bin/openocd "$@"
 	;;
-stm32f[04])
+stm32f[14])
 	exec openocd -f interface/stlink-v2.cfg -f target/${device}x.cfg "$@"
 	;;
 *)
