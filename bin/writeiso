@@ -1,15 +1,74 @@
 #!/bin/bash
 
+main() {
+	trap cleanup HUP INT QUIT TERM
+
+	[[ $# -lt 2 ]] && die "Usage: $0 <image file> <device>"
+
+	[[ $EUID -ne 0 ]] && exec sudo "$0" "$@"
+
+	filesystem=${0##*.}
+
+	case "$filesystem" in
+		fat32|ext2) ;;
+		*) die "Unsupported filesystem: '$filesystem'" ;;
+	esac
+
+	image_file=$1
+	device=$2
+
+	prompt "This will permanently overwrite all data on '$device', continue?"
+
+	if [[ $(lsblk --noheadings --output 'type' "$device") != "part" ]]; then
+		prompt "Device '$device' doesn't look like a partition, continue?"
+	fi
+
+	mkfs "$device"
+	[[ $? -ne 0 ]] && die "ERROR: could not create filesystem on device"
+
+	label=$(isoinfo -d -i "$image_file")
+	label=$(echo "$label" | grep "Volume id: ")
+	label=${label##Volume id: }
+	if [[ label = "" ]]; then
+		echo >&2 "WARNING: could not determine label of image"
+	fi
+	set_label "$device" "$label"
+
+	tmp=$(mktemp -d)
+	register_cleanup "rmdir \"$tmp\""
+
+	mkdir "$tmp/source"
+	[[ $? -ne 0 ]] && die "ERROR: could not make temporary directories"
+	register_cleanup "rmdir \"$tmp/source\""
+
+	mkdir "$tmp/target"
+	[[ $? -ne 0 ]] && die "ERROR: could not make temporary directories"
+	register_cleanup "rmdir \"$tmp/target\""
+
+	mount -o ro "$image_file" "$tmp/source"
+	[[ $? -ne 0 ]] && die "ERROR: could not mount image file"
+	register_cleanup "umount \"$tmp/source\""
+
+	mount -o noatime "$device" "$tmp/target"
+	[[ $? -ne 0 ]] && die "ERROR: could not mount device"
+	register_cleanup "umount \"$tmp/target\""
+
+	rsync --archive --info=progress2 "$tmp/source/" "$tmp/target"
+	[[ $? -ne 0 ]] && die "ERROR: could not copy files to device"
+
+	cleanup
+}
+
 cleanup_execs=()
+
+register_cleanup() {
+	cleanup_execs+=("$1")
+}
 
 cleanup() {
 	for (( i=${#cleanup_execs[@]}-1; i >= 0; i-- )); do
 		eval ${cleanup_execs[$i]}
 	done
-}
-
-register_cleanup() {
-	cleanup_execs+=("$1")
 }
 
 die() {
@@ -22,24 +81,6 @@ prompt() {
 	read -p "$1 (yes/no) "
 	[[ ! $REPLY =~ ^[yY][eE][sS]$ ]] && die "Cancelled"
 }
-
-[[ $# -lt 2 ]] && die "Usage: $0 <image file> <device>"
-
-if [[ $EUID -ne 0 ]]; then
-	exec sudo "$0" "$@"
-fi
-
-trap cleanup HUP INT QUIT TERM
-
-filesystem=${0##*.}
-
-case "$filesystem" in
-	fat32|ext2)
-		;;
-	*)
-		die "Unsupported filesystem: '$filesystem'"
-		;;
-esac
 
 mkfs() {
 	case $filesystem in
@@ -63,46 +104,4 @@ set_label() {
 	esac
 }
 
-image_file=$1
-device=$2
-
-prompt "This will permanently overwrite all data on '$device', continue?"
-
-if [[ $(lsblk --noheadings --output 'type' "$device") != "part" ]]; then
-	prompt "Device '$device' doesn't look like a partition, continue?"
-fi
-
-mkfs "$device"
-[[ $? -ne 0 ]] && die "ERROR: could not create filesystem on device"
-
-label=$(isoinfo -d -i "$image_file")
-label=$(echo "$label" | grep "Volume id: ")
-label=${label##Volume id: }
-if [[ label = "" ]]; then
-	echo >&2 "WARNING: could not determine label of image"
-fi
-set_label "$device" "$label"
-
-tmp=$(mktemp -d)
-register_cleanup "rmdir \"$tmp\""
-
-mkdir "$tmp/source"
-[[ $? -ne 0 ]] && die "ERROR: could not make temporary directories"
-register_cleanup "rmdir \"$tmp/source\""
-
-mkdir "$tmp/target"
-[[ $? -ne 0 ]] && die "ERROR: could not make temporary directories"
-register_cleanup "rmdir \"$tmp/target\""
-
-mount -o ro "$image_file" "$tmp/source"
-[[ $? -ne 0 ]] && die "ERROR: could not mount image file"
-register_cleanup "umount \"$tmp/source\""
-
-mount -o noatime "$device" "$tmp/target"
-[[ $? -ne 0 ]] && die "ERROR: could not mount device"
-register_cleanup "umount \"$tmp/target\""
-
-rsync --archive --info=progress2 "$tmp/source/" "$tmp/target"
-[[ $? -ne 0 ]] && die "ERROR: could not copy files to device"
-
-cleanup
+main "$@"
