@@ -47,6 +47,7 @@ infixl 4 <$$>
 myManageHook = manageDocks
            <+> (appName =? "trayer" --> doIgnore)
            <+> (title <$$> (\t -> " - KeePassX" `isSuffixOf` t && "kdbx" `isInfixOf` t) --> doShift "F12")
+           <+> (title =? "Auto-Type - KeePassX" --> doFloat)
            <+> (title =? "Kerbal Space Program" --> doFullFloat)
            <+> (title <$$> isPrefixOf "CKAN " --> doIgnore)
            <+> (isFullscreen --> doFullFloat)
