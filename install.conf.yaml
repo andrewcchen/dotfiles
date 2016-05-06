@@ -1,4 +1,4 @@
-- clean: ['~', '~/bin']
+- clean: ['~', '~/bin', '~/.xmonad']
 
 - link:
     ~/.bash_profile: bash_profile
@@ -10,6 +10,7 @@
     ~/.vimrc: vim/vimrc
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.xmonad/xmonad.hs: xmonad.hs
 
     ~/bin/openocd: bin/openocd
     ~/bin/openocd.stm32f1: bin/openocd
