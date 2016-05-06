@@ -11,6 +11,7 @@
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
     ~/.xmonad/xmonad.hs: xmonad.hs
+    ~/.xmobarrc: xmobarrc
 
     ~/bin/openocd: bin/openocd
     ~/bin/openocd.stm32f1: bin/openocd
