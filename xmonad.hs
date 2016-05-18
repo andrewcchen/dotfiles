@@ -29,7 +29,8 @@ main = do
 
 myExecute =
 	[ "sh -c \"killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --tint 0x00000000 --SetDockType true --SetPartialStrut true\""
-	, "sh -c \"if [ -z \\\"$(pidof keepassx2)\\\" ]; then exec keepassx2; fi\""
+	, "sh -c \"if [ -z \\\"$(pidof keepassx2)\\\" ]; then sleep 2; exec keepassx2; fi\""
+	, "hp-systray"
 	]
 
 myHandleEventHook = docksEventHook
@@ -46,9 +47,9 @@ infixl 4 <$$>
 
 myManageHook = manageDocks
            <+> (appName =? "trayer" --> doIgnore)
+           <+> (className =? "Gimp" --> doFloat)
            <+> (title <$$> (\t -> " - KeePassX" `isSuffixOf` t && "kdbx" `isInfixOf` t) --> doShift "F12")
            <+> (title =? "Auto-Type - KeePassX" --> doFloat)
-           <+> (title =? "Kerbal Space Program" --> doFullFloat)
            <+> (title <$$> isPrefixOf "CKAN " --> doIgnore)
            <+> (isFullscreen --> doFullFloat)
            <+> manageHook defaultConfig
