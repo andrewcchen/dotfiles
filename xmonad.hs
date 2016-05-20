@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, xmobarPP, ppOutput, ppTitle, x
 import XMonad.Hooks.EwmhDesktops(ewmh, fullscreenEventHook, ewmhDesktopsEventHook)
 import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts, docksEventHook)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Layout (Tall(Tall), Full(Full))
 import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyFloat))
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe)
@@ -38,9 +39,16 @@ myHandleEventHook = docksEventHook
                 <+> ewmhDesktopsEventHook
                 <+> handleEventHook defaultConfig
 
+layout = tiled ||| Full
+    where
+    tiled = Tall nmaster delta ratio
+    nmaster = 1
+    ratio = 1/2
+    delta = 3/100
+
 myLayoutHook = lessBorders OnlyFloat
              $ avoidStruts
-             $ layoutHook defaultConfig
+             $ layout
 
 infixl 4 <$$>
 (<$$>) = flip fmap
