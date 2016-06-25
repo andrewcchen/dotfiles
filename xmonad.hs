@@ -32,6 +32,7 @@ myExecute =
 	[ "sh -c \"killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true\""
 	, "sh -c \"if [ -z \\\"$(pidof keepassx2)\\\" ]; then sleep 2; exec keepassx2; fi\""
 	, "hp-systray"
+	, "kmix --keepvisibility"
 	]
 
 myHandleEventHook = docksEventHook
