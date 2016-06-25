@@ -90,8 +90,8 @@ myFocusedDoFullFloat windowset =
 
 myAdditionalKeys =
 	[ ((myModMask .|. shiftMask, xK_q), return ())
-	, ((myModMask, xK_z), spawn "xscreensaver-command -lock")
-	, ((myModMask .|. shiftMask, xK_z), spawn "sh -c \"xscreensaver-command -lock; systemctl suspend\"")
+	, ((myModMask, xK_y), spawn "xscreensaver-command -lock")
+	, ((myModMask .|. shiftMask, xK_y), spawn "sh -c \"xscreensaver-command -lock; systemctl suspend\"")
 	, ((myModMask, xK_f), windows myFocusedDoFullFloat)
 	--, ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 2-")
 	--, ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 2+")
