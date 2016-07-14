@@ -51,15 +51,14 @@ myLayoutHook = lessBorders OnlyFloat
              $ avoidStruts
              $ layout
 
-infixl 4 <$$>
-(<$$>) = flip fmap
-
 myManageHook = manageDocks
            <+> (appName =? "trayer" --> doIgnore)
+           -- workaround for CKAN freezing xmonad
+           <+> (("CKAN " `isPrefixOf`) <$> title --> doIgnore)
            <+> (className =? "Gimp" --> doFloat)
-           <+> (title <$$> (\t -> " - KeePassX" `isSuffixOf` t && "kdbx" `isInfixOf` t) --> doShift "F12")
            <+> (title =? "Auto-Type - KeePassX" --> doFloat)
-           <+> (title <$$> isPrefixOf "CKAN " --> doIgnore)
+           -- KeePassX starts with this title, before changing it immediately
+           <+> (title =? "KeePassX" --> doShift "F12")
            <+> (isFullscreen --> doFullFloat)
            <+> manageHook defaultConfig
 
