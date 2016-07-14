@@ -10,7 +10,8 @@ import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
 import Data.List (isPrefixOf, isSuffixOf, isInfixOf)
 import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute)
-import System.IO
+import System.IO (hPutStrLn)
+import Text.Printf (printf)
 
 main = do
 	xmproc <- spawnPipe "xmobar ~/.xmobarrc"
@@ -28,9 +29,14 @@ main = do
 		, workspaces = myWorkspaces
 		} `additionalKeys` myAdditionalKeys
 
+myRunOnce exe = printf fmt exe exe
+	where fmt = "sh -c \"if [ -z \\\"$(pidof %s)\\\" ]; then exec %s; fi\""
+
 myExecute =
 	[ "sh -c \"killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true\""
-	, "sh -c \"if [ -z \\\"$(pidof keepassx2)\\\" ]; then sleep 2; exec keepassx2; fi\""
+	, myRunOnce "keepassx2"
+	, myRunOnce "discord-canary"
+	, myRunOnce "konversation"
 	, "hp-systray"
 	, "kmix --keepvisibility"
 	]
@@ -59,6 +65,8 @@ myManageHook = manageDocks
            <+> (title =? "Auto-Type - KeePassX" --> doFloat)
            -- KeePassX starts with this title, before changing it immediately
            <+> (title =? "KeePassX" --> doShift "F12")
+           <+> (className =? "discord" --> doShift "F11")
+           <+> (className =? "konversation" --> doShift "F10")
            <+> (isFullscreen --> doFullFloat)
            <+> manageHook defaultConfig
 
