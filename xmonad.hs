@@ -99,9 +99,6 @@ myAdditionalKeys =
 	[ ((myModMask .|. shiftMask, xK_q), return ())
 	, ((myModMask .|. shiftMask, xK_z), spawn "sh -c \"xscreensaver-command -lock; systemctl suspend\"")
 	, ((myModMask, xK_f), windows myFocusedDoFullFloat)
-	--, ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 2-")
-	--, ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 2+")
-	--, ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
 	] ++ [
 		((myModMask, key), (windows $ W.greedyView ws))
 		| (key, ws) <- myExtraWorkspaces
