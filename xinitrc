@@ -11,6 +11,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_CURRENT_DESKTOP=KDE
 export KDE_SESSION_VERSION=5
 
+export STEAM_RUNTIME=0
+
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
