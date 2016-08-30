@@ -9,7 +9,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
 import Data.List (isPrefixOf, isSuffixOf, isInfixOf)
-import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute)
+import Graphics.X11.ExtraTypes.XF86 (xF86XK_MonBrightnessUp, xF86XK_MonBrightnessDown)
 import System.IO (hPutStrLn)
 import Text.Printf (printf)
 
@@ -98,6 +98,8 @@ myFocusedDoFullFloat windowset =
 myAdditionalKeys =
 	[ ((myModMask .|. shiftMask, xK_q), return ())
 	, ((myModMask .|. shiftMask, xK_z), spawn "sh -c \"xscreensaver-command -lock; systemctl suspend\"")
+	, ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+	, ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 	, ((myModMask, xK_f), windows myFocusedDoFullFloat)
 	] ++ [
 		((myModMask, key), (windows $ W.greedyView ws))
