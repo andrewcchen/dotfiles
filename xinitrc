@@ -13,14 +13,14 @@ export KDE_SESSION_VERSION=5
 
 export STEAM_RUNTIME=0
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+fcitx &
 
 xscreensaver -no-splash &
 
 nm-applet &
-ibus-daemon -dx &
 workrave &
 
 exec xmonad
