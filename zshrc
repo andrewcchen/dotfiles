@@ -20,7 +20,12 @@ ttyctl -f
 REPORTTIME=10
 
 bindkey '\e[3~' delete-char
+bindkey "^?" backward-delete-char
 bindkey '^R' history-incremental-search-backward
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey "^[[5~" history-beginning-search-backward
+bindkey "^[[6~" history-beginning-search-forward
 
 
 # Prompt {{{
