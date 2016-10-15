@@ -21,11 +21,11 @@ main = do
 		, layoutHook = myLayoutHook
 		, logHook = dynamicLogWithPP xmobarPP
 			{ ppOutput = hPutStrLn xmproc
-			, ppTitle = xmobarColor "green" "" . shorten 64
+			, ppTitle = xmobarColor "green" "" . shorten 50
 			}
 		, manageHook = myManageHook
 		, modMask = myModMask
-		, terminal = "konsole"
+		, terminal = "konsole --workdir ~"
 		, workspaces = myWorkspaces
 		} `additionalKeys` myAdditionalKeys
 
@@ -61,7 +61,7 @@ myManageHook = manageDocks
            <+> (appName =? "trayer" --> doIgnore)
            -- workaround for CKAN freezing xmonad
            <+> (("CKAN " `isPrefixOf`) <$> title --> doIgnore)
-           <+> (className =? "Gimp" --> doFloat)
+           -- <+> (className =? "Gimp" --> doFloat)
            <+> (title =? "Auto-Type - KeePassX" --> doFloat)
            -- KeePassX starts with this title, before changing it immediately
            <+> (title =? "KeePassX" --> doShift "F12")
@@ -75,7 +75,9 @@ myModMask = mod4Mask
 myWorkspaces = map show [1..9] ++ (map snd myExtraWorkspaces)
 
 myExtraWorkspaces =
-	[ (xK_0, "0")
+	[ (xK_0, "10")
+	, (xK_minus, "11")
+	, (xK_equal, "12")
 	, (xK_F1, "F1")
 	, (xK_F2, "F2")
 	, (xK_F3, "F3")
