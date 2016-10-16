@@ -9,6 +9,7 @@
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
     ~/.xinitrc: xinitrc
+    ~/.xkb: xkb/
     ~/.xmonad/xmonad.hs: xmonad.hs
     ~/.xmobarrc: xmobarrc
     ~/.zshenv: zshenv

@@ -3,8 +3,6 @@
 xrdb -merge .Xresources
 xsetroot -solid black
 xsetroot -cursor_name left_ptr
-setxkbmap -option compose:menu
-setxkbmap -option caps:escape
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -22,5 +20,7 @@ xscreensaver -no-splash &
 
 nm-applet &
 workrave &
+
+(sleep 5; xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap.xkb $DISPLAY) &
 
 exec xmonad
