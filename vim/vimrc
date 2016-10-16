@@ -35,10 +35,12 @@ nnoremap <Leader><Space> :nohlsearch<CR>
 if exists("less_mode") == 0
   highlight ExtraWhitespace ctermbg=red
   match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
-  nnoremap <Leader>wf :match ExtraWhitespace // <Bar> :unmap <Leader>wf<CR>
 
   " highlight the 81th column on long lines
   2match ErrorMsg '\%81v.'
+
+  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg //
+    \ <Bar> :unmap <Leader>w<CR>
 endif
 
 cmap w!! w !sudo tee > /dev/null %
