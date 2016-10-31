@@ -11,3 +11,10 @@
 	excludesfile = ~/.gitignore
 [color]
 	ui = auto
+[alias]
+	m = merge --no-ff --log
+	c = commit
+	a = add -A
+	b = checkout -b
+	s = status
+	ck = checkout
