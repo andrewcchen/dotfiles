@@ -1,10 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 xrdb -merge .Xresources
 xsetroot -solid black
 xsetroot -cursor_name left_ptr
+
 setxkbmap -option compose:menu
-setxkbmap -option caps:escape
+setxkbmap -option caps:none
+setxkbmap -option escape:shift-tilde
+
+/etc/udev/rules.d/monitor-hotplug.sh
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
