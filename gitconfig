@@ -18,3 +18,4 @@
 	b = checkout -b
 	s = status
 	ck = checkout
+	st = status
