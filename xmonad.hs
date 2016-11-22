@@ -70,7 +70,7 @@ myManageHook = manageDocks
            <+> (isFullscreen --> doFullFloat)
            <+> manageHook defaultConfig
 
-myModMask = mod4Mask
+myModMask = mod1Mask -- Alt
 
 myWorkspaces = map show [1..9] ++ (map snd myExtraWorkspaces)
 
