@@ -39,8 +39,7 @@ if exists("less_mode") == 0
   " highlight the 81th column on long lines
   2match ErrorMsg '\%81v.'
 
-  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg //
-    \ <Bar> :unmap <Leader>w<CR>
+  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg // <CR>
 endif
 
 cmap w!! w !sudo tee > /dev/null %
@@ -60,3 +59,7 @@ nnoremap <Leader>th :HighlightTags<CR>
 nnoremap <C-]> g<C-]>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Move one line on the screen instead of one actual line
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
