@@ -27,4 +27,6 @@ xscreensaver -no-splash &
 nm-applet &
 workrave &
 
+parcellite &
+
 exec xmonad
