@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = xkeyboard-config
+
+[Action]
+Description = Patching xkb keymaps ...
+When = PostTransaction
+Exec = /etc/pacman.d/hooks/xkb-keymap.sh

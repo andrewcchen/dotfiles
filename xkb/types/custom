@@ -1,0 +1,13 @@
+default xkb_types "custom" {
+	type "CUSTOM" {
+	modifiers = Shift+Mod3;
+	map[None] = Level1;
+	map[Shift] = Level2;
+	map[Mod3] = Level3;
+	map[Shift+Mod3] = Level4;
+	level_name[Level1] = "Base";
+	level_name[Level2] = "Shift";
+	level_name[Level3] = "Fn Base";
+	level_name[Level4] = "Shift Fn";
+	};
+};
