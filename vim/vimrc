@@ -32,6 +32,8 @@ set incsearch
 set hlsearch
 nnoremap <Leader><Space> :nohlsearch<CR>
 
+set nomodeline
+
 if exists("less_mode") == 0
   highlight ExtraWhitespace ctermbg=red
   match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
