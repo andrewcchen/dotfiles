@@ -36,8 +36,6 @@ myExecute =
 	[ "sh -c \"killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true\""
 	, myRunOnce "keepassx2"
 	, myRunOnce "discord-canary"
-	, myRunOnce "konversation"
-	, "hp-systray"
 	, "kmix --keepvisibility"
 	]
 
@@ -60,7 +58,7 @@ myLayoutHook = lessBorders OnlyFloat
 myManageHook = manageDocks
            <+> (appName =? "trayer" --> doIgnore)
            -- workaround for CKAN freezing xmonad
-           <+> (("CKAN " `isPrefixOf`) <$> title --> doIgnore)
+           -- <+> (("CKAN " `isPrefixOf`) <$> title --> doIgnore)
            -- <+> (className =? "Gimp" --> doFloat)
            <+> (title =? "Auto-Type - KeePassX" --> doFloat)
            -- KeePassX starts with this title, before changing it immediately
