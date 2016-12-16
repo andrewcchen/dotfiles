@@ -1,0 +1,4 @@
+evdev:atkbd:dmi:*
+ KEYBOARD_KEY_29=esc # swap escape and grave
+ KEYBOARD_KEY_1=grave
+ KEYBOARD_KEY_39=hp # space bar
