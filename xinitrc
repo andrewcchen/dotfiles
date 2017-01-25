@@ -21,9 +21,9 @@ fcitx &
 xscreensaver -no-splash &
 
 nm-applet &
-workrave &
-
 parcellite &
+workrave &
+redshift-gtk &
 
 setxkbmap custom
 xcape -t 200 -e 'Hyper_L=space'
