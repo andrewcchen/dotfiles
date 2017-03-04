@@ -119,6 +119,7 @@ unset SSH_ASKPASS
 alias ls='ls --color=auto -F'
 alias ll='ls -l'
 alias grep='grep --color=auto'
+alias less='less -R'
 alias ulimit='ulimit -S'
 #alias clang='ccache clang'
 #alias clang++='ccache clang++'
