@@ -24,6 +24,7 @@ nm-applet &
 parcellite &
 workrave &
 redshift-gtk &
+kmix --keepvisibility &
 
 setxkbmap custom
 xcape -t 200 -e 'Hyper_L=space'

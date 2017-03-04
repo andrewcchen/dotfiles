@@ -30,13 +30,11 @@ main = do
 		} `additionalKeys` myAdditionalKeys
 
 myRunOnce exe = printf fmt exe exe
-	where fmt = "sh -c \"if [ -z \\\"$(pidof %s)\\\" ]; then exec %s; fi\""
+	where fmt = "if [ -z \"$(pidof %s)\" ]; then exec %s; fi"
 
 myExecute =
-	[ "sh -c \"killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true\""
+	[ "killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true"
 	, myRunOnce "keepassxc"
-	, myRunOnce "discord"
-	, "kmix --keepvisibility"
 	]
 
 myHandleEventHook = docksEventHook
@@ -97,7 +95,7 @@ myFocusedDoFullFloat windowset =
 
 myAdditionalKeys =
 	[ ((myModMask .|. shiftMask, xK_q), return ())
-	, ((myModMask .|. shiftMask, xK_z), spawn "sh -c \"xscreensaver-command -lock; systemctl suspend\"")
+	, ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; systemctl suspend")
 	, ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
 	, ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 	, ((myModMask, xK_f), windows myFocusedDoFullFloat)
