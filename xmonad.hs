@@ -5,6 +5,8 @@ import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts, docksEventHook)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout (Tall(Tall), Full(Full))
 import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyFloat))
+import XMonad.Layout.ToggleLayouts (toggleLayouts, ToggleLayout(ToggleLayout))
+import XMonad.Layout.ThreeColumns (ThreeCol(ThreeCol))
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
@@ -42,12 +44,10 @@ myHandleEventHook = docksEventHook
                 <+> ewmhDesktopsEventHook
                 <+> handleEventHook defaultConfig
 
-layout = tiled ||| Full
+layout = toggleLayouts Full $ twoCol ||| threeCol
     where
-    tiled = Tall nmaster delta ratio
-    nmaster = 1
-    ratio = 1/2
-    delta = 3/100
+    twoCol = Tall 1 (3/100) (1/2)
+    threeCol = ThreeCol 1 (3/100) (1/3)
 
 myLayoutHook = lessBorders OnlyFloat
              $ avoidStruts
@@ -98,7 +98,8 @@ myAdditionalKeys =
 	, ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; systemctl suspend")
 	, ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
 	, ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
-	, ((myModMask, xK_f), windows myFocusedDoFullFloat)
+	, ((myModMask, xK_f), sendMessage ToggleLayout)
+	, ((myModMask .|. shiftMask, xK_f), windows myFocusedDoFullFloat)
 	] ++ [
 		((myModMask, key), (windows $ W.greedyView ws))
 		| (key, ws) <- myExtraWorkspaces
