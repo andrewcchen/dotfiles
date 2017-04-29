@@ -24,6 +24,3 @@
     ~/bin/openocd-writeimage.stm32f1: bin/openocd-writeimage
     ~/bin/openocd-writeimage.stm32f4: bin/openocd-writeimage
     ~/bin/vless: bin/vless
-    ~/bin/writeiso: bin/writeiso
-    ~/bin/writeiso.ext2: bin/writeiso
-    ~/bin/writeiso.fat32: bin/writeiso
