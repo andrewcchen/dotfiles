@@ -1,0 +1,18 @@
+- clean: ['~', '~/bin']
+
+- link:
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.makepkg.conf: makepkg.conf
+    ~/.vim: vim/
+    ~/.vimrc: vim/vimrc
+    ~/.xinitrc: xinitrc
+    ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
+
+    ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
+
+    ~/bin/diff-highlight: bin/diff-highlight
+    ~/bin/vless: bin/vless
