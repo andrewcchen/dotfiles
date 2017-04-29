@@ -24,6 +24,7 @@ nm-applet &
 parcellite &
 workrave &
 redshift-gtk &
+kglobalaccel &
 kmix --keepvisibility &
 
 setxkbmap custom
