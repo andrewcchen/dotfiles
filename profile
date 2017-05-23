@@ -1,4 +1,4 @@
-uname 027
+umask 027
 
 [[ $PATH == "$HOME/bin"* ]] || export PATH="$HOME/bin:${PATH}"
 
