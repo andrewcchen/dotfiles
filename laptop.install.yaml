@@ -16,6 +16,10 @@
 
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
 
+    ~/.config/ranger/rc.conf: ranger/rc.conf
+    ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    ~/.config/ranger/scope.sh: ranger/scope.sh
+
     ~/bin/diff-highlight: bin/diff-highlight
     ~/bin/openocd: bin/openocd
     ~/bin/openocd.stm32f1: bin/openocd
