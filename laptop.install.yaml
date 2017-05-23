@@ -13,6 +13,7 @@
     ~/.xmonad/xmonad.hs: xmonad.hs
     ~/.xmobarrc: xmobarrc
     ~/.zshenv: zshenv
+    ~/.zprofile: zprofile
     ~/.zshrc: zshrc
 
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf

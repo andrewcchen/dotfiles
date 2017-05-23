@@ -11,6 +11,7 @@
     ~/.vimrc: vim/vimrc
     ~/.xinitrc: xinitrc
     ~/.zshenv: zshenv
+    ~/.zprofile: zprofile
     ~/.zshrc: zshrc
 
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
