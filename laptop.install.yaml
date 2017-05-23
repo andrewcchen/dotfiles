@@ -6,6 +6,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.makepkg.conf: makepkg.conf
+    ~/.profile: profile
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
     ~/.xinitrc: xinitrc
