@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source $HOME/.profile
+
 xrdb -merge .Xresources
 xsetroot -solid black
 xsetroot -cursor_name left_ptr
