@@ -16,6 +16,7 @@
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
 
+    ~/.config/dunst/dunstrc: dunst/dunstrc
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
 
     ~/.config/ranger/rc.conf: ranger/rc.conf
