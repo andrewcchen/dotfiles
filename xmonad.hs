@@ -18,7 +18,7 @@ import Text.Printf (printf)
 main = do
 	xmproc <- spawnPipe "xmobar ~/.xmobarrc"
 	mapM spawn myExecute
-	xmonad $ ewmh $ defaultConfig
+	xmonad $ ewmh $ def
 		{ handleEventHook = myHandleEventHook
 		, layoutHook = myLayoutHook
 		, logHook = dynamicLogWithPP xmobarPP
