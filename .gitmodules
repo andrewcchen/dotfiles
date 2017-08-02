@@ -16,3 +16,24 @@
 [submodule "vim/bundle/haskell-vim"]
 	path = vim/bundle/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "vim/bundle/vim-haskell-indent"]
+	path = vim/bundle/vim-haskell-indent
+	url = https://github.com/itchyny/vim-haskell-indent.git
+[submodule "vim/bundle/vimproc"]
+	path = vim/bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim
+[submodule "vim/bundle/ghcmod"]
+	path = vim/bundle/ghcmod
+	url = https://github.com/eagletmt/ghcmod-vim
+[submodule "vim/bundle/neocomplete"]
+	path = vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim
+[submodule "vim/bundle/neco-ghc"]
+	path = vim/bundle/neco-ghc
+	url = https://github.com/eagletmt/neco-ghc.git
+[submodule "vim/bundle/jellybeans"]
+	path = vim/bundle/jellybeans
+	url = https://github.com/nanotech/jellybeans.vim.git
