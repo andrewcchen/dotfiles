@@ -9,4 +9,6 @@ setl cinoptions=
 " Disable haskell-vim syntax indent script
 let g:haskell_indent_disable = 1
 
+let g:necoghc_enable_detailed_browse = 1
+
 setl omnifunc=necoghc#omnifunc
