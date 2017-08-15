@@ -2,25 +2,19 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
 [submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
+	path = vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/preamble.vim"]
 	path = vim/bundle/preamble.vim
 	url = https://github.com/xaizek/preamble.vim.git
-[submodule "vim/bundle/vim-easytags"]
-	path = vim/bundle/vim-easytags
-	url = https://github.com/xolox/vim-easytags.git
-[submodule "vim/bundle/vim-misc"]
-	path = vim/bundle/vim-misc
-	url = https://github.com/xolox/vim-misc.git
 [submodule "vim/bundle/haskell-vim"]
 	path = vim/bundle/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim.git
 [submodule "vim/bundle/vim-abolish"]
-	path = vim/bundle/vim-abolish
+	path = vim/bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
 [submodule "vim/bundle/vim-haskell-indent"]
-	path = vim/bundle/vim-haskell-indent
+	path = vim/bundle/haskell-indent
 	url = https://github.com/itchyny/vim-haskell-indent.git
 [submodule "vim/bundle/vimproc"]
 	path = vim/bundle/vimproc

@@ -21,7 +21,7 @@ set wrap
 set linebreak
 set nolist  " list disables linebreak
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
