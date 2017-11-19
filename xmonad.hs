@@ -1,13 +1,17 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+
 import XMonad
+import XMonad.Config.Kde (kdeConfig)
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, xmobarPP, ppOutput, ppTitle, xmobarColor, shorten)
 import XMonad.Hooks.EwmhDesktops(ewmh, fullscreenEventHook, ewmhDesktopsEventHook)
 import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts, docksEventHook)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout (Tall(Tall), Full(Full))
-import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyFloat))
+import XMonad.Layout.NoBorders --(lessBorders, Ambiguity(OnlyFloat))
 import XMonad.Layout.ToggleLayouts (toggleLayouts, ToggleLayout(ToggleLayout))
-import XMonad.Layout.ThreeColumns (ThreeCol(ThreeCol))
-import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Layout.ThreeColumns --(ThreeCol(ThreeCol))
+import XMonad.Util.EZConfig --(additionalKeys)
 import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
 import Data.List (isPrefixOf, isSuffixOf, isInfixOf)
@@ -15,53 +19,82 @@ import Graphics.X11.ExtraTypes.XF86 (xF86XK_MonBrightnessUp, xF86XK_MonBrightnes
 import System.IO (hPutStrLn)
 import Text.Printf (printf)
 
+import XMonad.Layout
+import qualified XMonad.StackSet as W
+import Control.Monad
+
+data TallDelta a = TallDelta !Int !Rational !Rational deriving (Show, Read)
+
+instance LayoutClass TallDelta a where
+    pureLayout (TallDelta delta _ frac) r s = zip ws rs
+        where ws = W.integrate s
+              rs = tile frac r nmaster total
+              nmaster = min total $ max 0 $ total `quot` 2 + delta
+              total = length ws
+
+    pureMessage (TallDelta delta inc frac) m =
+        msum [ fmap resize (fromMessage m)
+             , fmap incmastern (fromMessage m)]
+        where resize Shrink = TallDelta delta inc (max 0 $ frac-inc)
+              resize Expand = TallDelta delta inc (min 1 $ frac+inc)
+              incmastern (IncMasterN d) = TallDelta (delta+d) inc frac
+
+    description _ = "Tall"
+
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmobarrc"
     mapM spawn myExecute
-    xmonad $ ewmh $ def
+    xmonad $ ewmh $ def -- kdeConfig
         { handleEventHook = myHandleEventHook
         , layoutHook = myLayoutHook
         , logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
-            , ppTitle = xmobarColor "green" "" . shorten 50
+            , ppTitle = xmobarColor "green" "" -- . shorten 50
             }
         , manageHook = myManageHook
         , modMask = myModMask
         , terminal = "konsole --workdir ~"
         , workspaces = myWorkspaces
         } `additionalKeys` myAdditionalKeys
+        --  `removeMouseBindings`
+        --    [ (myModMask, button1)
+        --    , (myModMask, button3)
+        --    ]
+
 
 myRunOnce exe = printf fmt exe exe
     where fmt = "if [ -z \"$(pidof %s)\" ]; then exec %s; fi"
 
 myExecute =
-    [ "killall trayer; exec trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint 0x00000000 --SetDockType true --SetPartialStrut true"
-    , myRunOnce "keepassxc"
+    --[ "exec setxkbmap custom"
+    --, "sleep 1; exec xcape -t 200 -e Hyper_L=space"
+    [ myRunOnce "keepassxc"
     ]
 
 myHandleEventHook = docksEventHook
                 <+> fullscreenEventHook
                 <+> ewmhDesktopsEventHook
-                <+> handleEventHook defaultConfig
+                <+> handleEventHook def
 
-layout = toggleLayouts Full $ twoCol ||| threeCol
+layout = toggleLayouts Full $ twoCol ||| Mirror twoCol ||| threeCol
     where
-    twoCol = Tall 1 (3/100) (1/2)
-    threeCol = ThreeCol 1 (3/100) (1/3)
+    twoCol = TallDelta 0 (4/100) (1/2)
+    threeCol = ThreeColMid 1 (4/100) (2/5)
 
-myLayoutHook = lessBorders OnlyFloat
+myLayoutHook = lessBorders Screen
              $ avoidStruts
              $ layout
 
 myManageHook = manageDocks
-           <+> (appName =? "trayer" --> doIgnore)
+           <+> (className =? "trayer" --> doIgnore)
+           <+> (className =? "plasmashell" --> doFloat)
            <+> (title =? "Auto-Type - KeePassXC" --> doFloat)
            -- KeePassXC starts with this title, before changing it immediately
            <+> (title =? "KeePassXC" --> doShift "F12")
            <+> (className =? "discord" --> doShift "F11")
            <+> (className =? "konversation" --> doShift "F10")
            <+> (isFullscreen --> doFullFloat)
-           <+> manageHook defaultConfig
+           <+> manageHook def
 
 myModMask = mod1Mask -- Alt
 
@@ -93,8 +126,8 @@ myFocusedDoFullFloat windowset =
 myAdditionalKeys =
     [ ((myModMask .|. shiftMask, xK_q), return ())
     , ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; systemctl suspend")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+    -- , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    -- , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
     , ((myModMask, xK_f), sendMessage ToggleLayout)
     , ((myModMask .|. shiftMask, xK_f), windows myFocusedDoFullFloat)
     ] ++ [

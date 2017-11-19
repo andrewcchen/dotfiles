@@ -23,7 +23,7 @@ Config { font = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run BatteryP ["BAT0"] [ "-t", "<acstatus>"
-                                            , "-L", "10"
+                                            , "-L", "25"
                                             , "-l", "red"
                                             , "--"
                                             , "-O", "Charging: <left>% <timeleft> | "
@@ -39,10 +39,10 @@ Config { font = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
        , template = "\
                     \<fc=#ee9a00>%date%</fc> | \
                     \%StdinReader%\
-                    \}{\
+                    \}{ | \
                     \%battery%\
                     \%multicpu% | \
                     \%memory% | \
                     \%swap% | \
-                    \%dynnetwork% "
+                    \%dynnetwork% | "
        }

@@ -41,13 +41,13 @@ set incsearch
 set hlsearch
 nnoremap <Leader><Space> :nohlsearch<CR>
 
-if exists("less_mode") == 0
-  highlight ExtraWhitespace ctermbg=red
-  match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
-  " highlight the 81th column on long lines
-  " 2match ErrorMsg '\%81v.'
-  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg // <CR>
-endif
+"if exists("less_mode") == 0
+"  highlight ExtraWhitespace ctermbg=red
+"  match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
+"  " highlight the 81th column on long lines
+"  " 2match ErrorMsg '\%81v.'
+"  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg // <CR>
+"endif
 
 cmap w!! w !sudo tee > /dev/null %
 

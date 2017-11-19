@@ -24,10 +24,4 @@
     ~/.config/ranger/scope.sh: ranger/scope.sh
 
     ~/bin/diff-highlight: bin/diff-highlight
-    ~/bin/openocd: bin/openocd
-    ~/bin/openocd.stm32f1: bin/openocd
-    ~/bin/openocd.stm32f4: bin/openocd
-    ~/bin/openocd-writeimage: bin/openocd-writeimage
-    ~/bin/openocd-writeimage.stm32f1: bin/openocd-writeimage
-    ~/bin/openocd-writeimage.stm32f4: bin/openocd-writeimage
     ~/bin/vless: bin/vless
