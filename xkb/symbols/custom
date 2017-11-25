@@ -39,7 +39,7 @@ xkb_symbols "basic" {
 	key <AD12> { type = "CUSTOM", [ bracketright, braceright, Pause, Pause ] };
 	key <BKSL> { type = "CUSTOM", [ backslash, bar, NoSymbol, NoSymbol ] };
 
-	key <CAPS> { [ Control_L ] };
+	key <CAPS> { [ Caps_Lock ] };
 	key <AC01> { type = "CUSTOM", [ a, A, Left, Left ] };
 	key <AC02> { type = "CUSTOM", [ s, S, Down, Down ] };
 	key <AC03> { type = "CUSTOM", [ d, D, Right, Right ] };
@@ -66,7 +66,7 @@ xkb_symbols "basic" {
 	key <AB10> { type = "CUSTOM", [ slash, question, NoSymbol, NoSymbol ] };
 	key <RTSH> { [ Shift_R ] };
 
-	key <LCTL> { [ Control_L ] };
+	key <LCTL> { type = "CUSTOM", [ Control_L, Control_L, Caps_Lock, Caps_Lock ] };
 	key <LWIN> { [ Super_L ] };
 	key <LALT> { [ Alt_L ] };
 	key <SPCE> { [ space ] };
@@ -81,7 +81,7 @@ xkb_symbols "basic" {
 
 	modifier_map Shift { <LFSH>, <RTSH> };
 	// modifier_map Lock { };
-	modifier_map Control { <LCTL>, <RCTL>, <CAPS> };
+	modifier_map Control { <LCTL>, <RCTL> };
 	modifier_map Mod1 { <LALT>, <RALT> };
 	modifier_map Mod2 { <NMLK> };
 	modifier_map Mod3 { <I219> };
