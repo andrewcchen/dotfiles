@@ -1,11 +1,11 @@
-Config { font = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
+Config { font = "xft:DejaVu Sans Mono:size=9,Noto Sans CJK SC:size=8"
        , additionalFonts = []
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
        , fgColor = "grey"
        , alpha = 255
-       , position = Static { xpos = 0, ypos = 0, width = 1230, height = 16 }
+       , position = Static { xpos = 0, ypos = 0, width = 1266, height = 19 }
        , textOffset = -1
        , iconOffset = -1
        , lowerOnStart = True

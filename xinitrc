@@ -22,8 +22,6 @@ xscreensaver -no-splash &
 
 dunst &
 nm-applet &
-#parcellite &
-#workrave &
 redshift-gtk &
 kglobalaccel &
 kmix --keepvisibility &
@@ -31,6 +29,6 @@ kmix --keepvisibility &
 setxkbmap custom
 xcape -t 200 -e 'Hyper_L=space'
 
-trayer --edge top --align left --expand true --distance 1230 --distancefrom left --widthtype pixel --width 136 --height 16 --transparent true --alpha 0 --tint  0x00000000 --SetDockType true --SetPartialStrut true &
+trayer --edge top --align left --expand true --distance 1266 --distancefrom left --widthtype pixel --width 100 --height 19 --transparent true --alpha 0 --tint  0x00000000 --SetDockType true --SetPartialStrut true &
 
 exec xmonad
