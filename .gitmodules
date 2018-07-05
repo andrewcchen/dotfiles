@@ -40,3 +40,15 @@
 [submodule "vim/bundle/editorconfig"]
 	path = vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "vim/bundle/deoplete"]
+	path = vim/bundle/deoplete
+	url = https://github.com/Shougo/deoplete.nvim.git
+[submodule "vim/bundle/nvim-yarp"]
+	path = vim/bundle/nvim-yarp
+	url = https://github.com/roxma/nvim-yarp.git
+[submodule "vim-hug-neovim-rpc"]
+	path = vim-hug-neovim-rpc
+	url = https://github.com/roxma/vim-hug-neovim-rpc
+[submodule "vim/bundle/vim-hug-neovim-rpc"]
+	path = vim/bundle/vim-hug-neovim-rpc
+	url = https://github.com/roxma/vim-hug-neovim-rpc

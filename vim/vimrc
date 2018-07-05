@@ -63,13 +63,13 @@ let g:gutentags_ctags_tagfile = '.tags'
 nnoremap <Leader>fp :call Preamble#Fold()<CR>
 set foldmethod=marker
 
-" neocomplete set up
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+" deoplete set up
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#syntax#min_keyword_length = 3
 
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
+inoremap <expr><C-g> deoplete#undo_completion()
+inoremap <expr><C-l> deoplete#complete_common_string()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -79,13 +79,13 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+if !exists('g:deoplete#sources#omni#input_patterns')
+  let g:deoplete#sources#omni#input_patterns = {}
 endif
 
-call neocomplete#custom#source('tag', 'disabled_filetypes', { 'haskell' : 1,
-                                                            \ 'gitcommit' : 1,
-                                                            \ })
+call deoplete#custom#source('tag', 'disabled_filetypes', { 'haskell' : 1,
+                                                         \ 'gitcommit' : 1,
+                                                         \ })

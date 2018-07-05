@@ -1,5 +1,6 @@
-umask 027
+umask 022
 
-[[ $PATH == "$HOME/bin"* ]] || export PATH="$HOME/bin:${PATH}"
+[[ $PATH =~ (^|:)$HOME/.local/bin($|:) ]] || export PATH="$HOME/.local/bin:${PATH}"
+[[ $PATH =~ (^|:)$HOME/bin($|:) ]] || export PATH="$HOME/bin:${PATH}"
 
 true

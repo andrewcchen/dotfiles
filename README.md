@@ -1,8 +1,8 @@
 ## Andrew's dotfiles
 
-My config files, need I say more?
+My config files
 
-Well ok, here are a few thing that are maybe of some interest to you:
+Here are a few thing that are maybe of some interest to you:
 
 - A keymap to have SpaceFN function on my laptop keyboard. See `xkb/` and `udev/hwdb.d/`
 - xmonad and xmobar configurations
