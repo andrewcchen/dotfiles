@@ -15,13 +15,13 @@ setopt notify
 setopt histignoredups
 setopt promptsubst
 unsetopt beep
-bindkey -v
+#bindkey -v
 ttyctl -f
 REPORTTIME=10
 
 bindkey '\e[3~' delete-char
 bindkey "^?" backward-delete-char
-bindkey '^R' history-incremental-search-backward
+#bindkey '^R' history-incremental-search-backward
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey "^[[5~" history-beginning-search-backward
@@ -89,11 +89,11 @@ build-prompt() {
 
 	prompt+=$'\n'
 
-	if [[ $KEYMAP == vicmd ]]; then
-		prompt+="${ylw}[N]$rst "
-	else
-		prompt+="${gry}[I]$rst "
-	fi
+	#if [[ $KEYMAP == vicmd ]]; then
+	#	prompt+="${ylw}[N]$rst "
+	#else
+	#	prompt+="${gry}[I]$rst "
+	#fi
 
 	prompt+="$rst\$ "
 
@@ -124,7 +124,6 @@ alias less='less -R'
 alias ulimit='ulimit -S'
 alias makepkg='makepkg -Cc'
 alias octave='octave --no-gui'
-#alias rclone='rsync -azchv -e ssh --delete-after --info=progress2'
 
 alias git-clone-shallow='git clone --depth 1'
 alias offlineimap-sync-now='killall -USR1 offlineimap'
