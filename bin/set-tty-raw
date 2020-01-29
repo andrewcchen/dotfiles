@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  echo "Usage: $0 <tty> [baud]"
+  exit 1
+fi
+
+baud=${2:-9600}
+
+sudo chmod 666 $1
+stty -F $1 cs8 $baud raw -echo -echoe -echok -echoctl -echoke

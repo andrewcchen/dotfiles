@@ -2,10 +2,7 @@
 
 set -e
 
-if [[ $(hostname) == 'andrew-laptop' ]]; then CONFIG="laptop.install.yaml"
-elif [[ $(hostname) == 'andrew-desktop-arch' ]]; then CONFIG="desktop.install.yaml"
-else CONFIG="install.conf.yaml"
-fi
+CONFIG="install.conf.yaml"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"

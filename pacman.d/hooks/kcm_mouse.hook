@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/qt/plugins/kcm_mouse.so
+
+[Action]
+Description = Removing kcm_mouse.so
+When = PostTransaction
+Exec = /usr/bin/rm /usr/lib/qt/plugins/kcm_mouse.so

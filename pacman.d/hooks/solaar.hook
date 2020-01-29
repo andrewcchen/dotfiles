@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = etc/xdg/autostart/solaar.desktop
+
+[Action]
+Description = Removing autostart/solaar.desktop
+When = PostTransaction
+Exec = /usr/bin/rm /etc/xdg/autostart/solaar.desktop

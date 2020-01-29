@@ -4,8 +4,6 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
-    ~/.makepkg.conf: makepkg.conf
     ~/.profile: profile
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
@@ -15,9 +13,5 @@
 
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
 
-    ~/.config/ranger/rc.conf: ranger/rc.conf
-    ~/.config/ranger/rifle.conf: ranger/rifle.conf
-    ~/.config/ranger/scope.sh: ranger/scope.sh
-
     ~/bin/diff-highlight: bin/diff-highlight
-    ~/bin/vless: bin/vless
+    ~/bin/set-tty-raw: bin/set-tty-raw
