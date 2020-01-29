@@ -9,7 +9,6 @@
     ~/.profile: profile
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc
-    ~/.xinitrc: xinitrc
     ~/.zshenv: zshenv
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc

@@ -52,28 +52,19 @@ build-prompt() {
 
 	# exitcode
 	if [[ $exitcode -eq 0 ]]; then
-		prompt+="$grn%{✔%G%}$rst "
+		prompt+="$grn%{✔%G%}$rst"
 	else
-		prompt+="$red%{✘%G%}$rst "
+		prompt+="$red%{✘%G%}$rst"
 	fi
 
 	# username
-	prompt+="$grn%n$rst "
+	prompt+=" $grn%n$rst"
 
 	# hostname
-	prompt+="${gry}at$rst $cyn%M$rst "
+	prompt+=" ${gry}at$rst $cyn%M$rst"
 
 	# current working directory
-	prompt+="${gry}in$rst $ylw%~$rst "
-
-	# cabal sandbox
-	if [[ -n $CABAL_SANDBOX_CONFIG ]]; then
-		local sandbox
-		sandbox=$CABAL_SANDBOX_CONFIG
-		sandbox=${sandbox%%'/cabal.sandbox.config'}
-		sandbox=${sandbox/~/'~'} # Abbreviate home directory with ~
-		prompt+="${gry}in$rst cabal:$cyn($sandbox)$rst "
-	fi
+	prompt+=" ${gry}in$rst $ylw%~$rst"
 
 	# git branch
 	local branch
@@ -84,16 +75,10 @@ build-prompt() {
 				branch=$(git rev-parse --short HEAD 2>/dev/null)
 			fi
 		fi
-		prompt+="${gry}on$rst git:$cyn($branch)$rst "
+		prompt+=" ${gry}on$rst git:$cyn($branch)$rst"
 	fi
 
 	prompt+=$'\n'
-
-	#if [[ $KEYMAP == vicmd ]]; then
-	#	prompt+="${ylw}[N]$rst "
-	#else
-	#	prompt+="${gry}[I]$rst "
-	#fi
 
 	prompt+="$rst\$ "
 
@@ -129,6 +114,11 @@ alias git-clone-shallow='git clone --depth 1'
 alias offlineimap-sync-now='killall -USR1 offlineimap'
 alias octave-gui='octave --force-gui'
 
+diffc() { colordiff -u "$@" | diff-highlight | less -FR }
+
+qpdf-merge() {
+	out="$1";	shift
+	qpdf --linearize --empty --pages "$@" -- $out }
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 

@@ -1,5 +1,5 @@
 [user]
-	email = andrew.chuanye.chen@gmail.com
+	email = andrew@xortux.com
 	name = Andrew Chen
 [diff]
 	tool = kompare
@@ -23,3 +23,5 @@
 	log = diff-highlight | less
 	show = diff-highlight | less
 	diff = diff-highlight | less
+[cola]
+	spellcheck = false
