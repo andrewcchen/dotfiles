@@ -30,7 +30,11 @@ call pathogen#helptags()
 syntax on
 set background=dark
 let g:jellybeans_use_term_italics = 1
-let g:jellybeans_overrides = { 'background': { 'guibg': '000000' } }
+let g:jellybeans_overrides = {
+\	'background': { 'guibg': '101010' },
+\	'Normal': { 'guifg': 'e4e4e4' },
+\	'Comment': { 'guifg': 'b2b2b2' },
+\}
 colorscheme jellybeans
 
 filetype plugin indent on
