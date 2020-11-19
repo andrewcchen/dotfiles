@@ -25,3 +25,5 @@
 	diff = diff-highlight | less
 [cola]
 	spellcheck = false
+[pull]
+	rebase = true
