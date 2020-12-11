@@ -1,9 +1,14 @@
+- defaults:
+    link:
+        relink: true
+
 - clean: ['~', '~/bin']
 
 - link:
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
     ~/.profile: profile
     ~/.vim: vim/
     ~/.vimrc: vim/vimrc

@@ -52,3 +52,6 @@
 [submodule "vim/bundle/vim-hug-neovim-rpc"]
 	path = vim/bundle/vim-hug-neovim-rpc
 	url = https://github.com/roxma/vim-hug-neovim-rpc
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git

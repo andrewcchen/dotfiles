@@ -27,3 +27,5 @@
 	spellcheck = false
 [pull]
 	rebase = true
+[merge "ours"]
+	driver = true
