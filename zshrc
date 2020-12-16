@@ -99,7 +99,6 @@ export KEYTIMEOUT=1
 
 export EDITOR=vim
 unset SSH_ASKPASS
-export RANGER_LOAD_DEFAULT_RC=FALSE
 
 
 alias ls='ls --color=auto -F'
