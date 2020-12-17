@@ -61,10 +61,10 @@ build-prompt() {
 	prompt+=" $grn%n$rst"
 
 	# hostname
-	prompt+=" ${gry}at$rst $cyn%M$rst"
+	prompt+="${gry}@$rst$cyn%M$rst"
 
 	# current working directory
-	prompt+=" ${gry}in$rst $ylw%~$rst"
+	prompt+="${gry}:$rst$ylw%~$rst"
 
 	# git branch
 	local branch
@@ -75,7 +75,7 @@ build-prompt() {
 				branch=$(git rev-parse --short HEAD 2>/dev/null)
 			fi
 		fi
-		prompt+=" ${gry}on$rst git:$cyn($branch)$rst"
+		prompt+=" ${gry}on$rst git:$mag$branch$rst"
 	fi
 
 	prompt+=$'\n'
