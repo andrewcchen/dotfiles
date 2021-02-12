@@ -27,3 +27,4 @@
 
     ~/bin/diff-highlight: bin/diff-highlight
     ~/bin/set-tty-raw: bin/set-tty-raw
+    ~/bin/usb-reset: bin/usb-reset

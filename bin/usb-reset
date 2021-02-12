@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+if [[ -z $1 || -z $2 ]]; then
+	echo >&2 "Usage: $0 <bus> <device>"
+	exit 2
+fi
+
+bus=$1
+device=$2
+
+for path in /sys/bus/usb/devices/${bus}-*; do
+	if [[ -e ${path}/devnum && x$(< ${path}/devnum) == x${device} ]]; then
+		sudo sh -c "echo 0 > ${path}/authorized; echo 1 > ${path}/authorized"
+		exit 0
+	fi
+done
+
+echo >&2 "Not found: Bus $bus Device $device"
+exit 1
