@@ -21,7 +21,7 @@ REPORTTIME=10
 
 bindkey '\e[3~' delete-char
 bindkey "^?" backward-delete-char
-#bindkey '^R' history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey "^[[5~" history-beginning-search-backward
@@ -95,10 +95,6 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 # }}}
-
-
-export EDITOR=vim
-unset SSH_ASKPASS
 
 
 alias ls='ls --color=auto -F'

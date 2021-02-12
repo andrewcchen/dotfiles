@@ -1,8 +1,14 @@
 - defaults:
     link:
-        relink: true
+      relink: true
 
-- clean: ['~', '~/bin']
+- clean:
+    - '~'
+    - ~/bin
+
+- create:
+    - ~/bin
+    - ~/.config/fontconfig/conf.d
 
 - link:
     ~/.bash_profile: bash_profile
