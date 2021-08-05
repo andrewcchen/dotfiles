@@ -47,49 +47,12 @@ set incsearch
 set hlsearch
 nnoremap <Leader><Space> :nohlsearch<CR>
 
-"if exists("less_mode") == 0
-"  highlight ExtraWhitespace ctermbg=red
-"  match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
-"  " highlight the 81th column on long lines
-"  " 2match ErrorMsg '\%81v.'
-"  nnoremap <Leader>w :match ExtraWhitespace // <Bar> :2match ErrorMsg // <CR>
-"endif
-
 cmap w!! w !sudo tee > /dev/null %
-
-nnoremap <Leader>in :.-1read ~/Templates/
 
 " Move one line on the screen instead of one actual line
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
 
-let g:gutentags_enabled = 0
-let g:gutentags_ctags_tagfile = '.tags'
-
 call Preamble#Enable('c,cpp,python')
 nnoremap <Leader>fp :call Preamble#Fold()<CR>
 set foldmethod=marker
-
-" deoplete set up
-let g:deoplete#enable_at_startup = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#syntax#min_keyword_length = 3
-let g:deoplete#ignore_sources = { 'gitcommit': 'tag' }
-
-inoremap <expr><C-g> deoplete#undo_completion()
-inoremap <expr><C-l> deoplete#complete_common_string()
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-
-if !exists('g:deoplete#sources#omni#input_patterns')
-  let g:deoplete#sources#omni#input_patterns = {}
-endif

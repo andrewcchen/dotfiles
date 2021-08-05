@@ -15,7 +15,6 @@ setopt notify
 setopt histignoredups
 setopt promptsubst
 unsetopt beep
-#bindkey -v
 ttyctl -f
 REPORTTIME=10
 
@@ -72,7 +71,7 @@ build-prompt() {
 	local branch
 	if branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
 		if [[ "$branch" == "HEAD" ]]; then
-			branch=$(git describe --exact-match HEAD 2>/dev/null)
+			branch=$(git describe --tags --exact-match HEAD 2>/dev/null)
 			if [[ $? -ne 0 ]]; then
 				branch=$(git rev-parse --short HEAD 2>/dev/null)
 			fi
@@ -100,16 +99,11 @@ export KEYTIMEOUT=1
 
 
 alias ls='ls --color=auto -F'
-alias ll='ls -l'
 alias grep='grep --color=auto'
 alias less='less -R'
-alias ulimit='ulimit -S'
 alias makepkg='makepkg -Cc'
-alias octave='octave --no-gui'
 
 alias git-clone-shallow='git clone --depth 1'
-alias offlineimap-sync-now='killall -USR1 offlineimap'
-alias octave-gui='octave --force-gui'
 
 diffc() { colordiff -u "$@" | diff-highlight | less -FR }
 
