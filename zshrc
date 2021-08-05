@@ -105,6 +105,9 @@ alias makepkg='makepkg -Cc'
 
 alias git-clone-shallow='git clone --depth 1'
 
+# https://gist.github.com/chakrit/5004006
+alias tmux='tmux new-session -t s \; set destroy-unattached'
+
 diffc() { colordiff -u "$@" | diff-highlight | less -FR }
 
 qpdf-merge() {
