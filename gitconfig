@@ -1,10 +1,6 @@
 [user]
 	email = andrew@xortux.com
 	name = Andrew Chen
-[diff]
-	tool = kompare
-[merge]
-	tool = kdiff3
 [push]
 	default = current
 [core]
@@ -15,19 +11,18 @@
 	m = merge --no-ff --log
 	c = commit
 	a = add -A
-	b = checkout -b
+	b = branch
 	s = status
 	ck = checkout
 	st = status
+	lg = log --all --oneline --graph --decorate
 [pager]
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
-[cola]
-	spellcheck = false
+	log = diff-highlight | less -FR
+	show = diff-highlight | less -FR
+	diff = diff-highlight | less -FR
 [pull]
 	rebase = true
-[merge "ours"]
-	driver = true
+[diff]
+	algorithm = patience
 [init]
 	defaultBranch = master

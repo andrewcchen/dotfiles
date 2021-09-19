@@ -28,7 +28,6 @@ bindkey '^[[4~' end-of-line
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 
-
 # Prompt {{{
 
 autoload -U promptinit
@@ -65,7 +64,7 @@ build-prompt() {
 	prompt+="${gry}@$rst$cyn%M$rst"
 
 	# current working directory
-	prompt+="${gry}:$rst$ylw%~$rst"
+	prompt+=" $ylw%~$rst"
 
 	# git branch
 	local branch
@@ -76,12 +75,10 @@ build-prompt() {
 				branch=$(git rev-parse --short HEAD 2>/dev/null)
 			fi
 		fi
-		prompt+=" ${gry}on$rst git:$mag$branch$rst"
+		prompt+=" git:$mag$branch$rst"
 	fi
 
-	prompt+=$'\n'
-
-	prompt+="$rst\$ "
+	prompt+="$rst\n\$ "
 
 	echo -n $prompt
 }
@@ -97,24 +94,35 @@ export KEYTIMEOUT=1
 
 # }}}
 
-
 alias ls='ls --color=auto -F'
 alias grep='grep --color=auto'
 alias less='less -R'
 alias makepkg='makepkg -Cc'
 
-alias git-clone-shallow='git clone --depth 1'
+tmuxs() {
+	# https://gist.github.com/chakrit/5004006
+	local sname=s
+	for i in {1..99}; do
+		if ! \tmux ls 2>&1 | grep -q "$sname-$i:"'.*(attached)'; then
+			if \tmux ls 2>&1 | grep -q "$sname-$i:"; then
+				\tmux attach-session -t $sname-$i
+			else
+				\tmux new-session -t $sname -s $sname-$i
+			fi
+			break
+		fi
+	done
+}
 
-# https://gist.github.com/chakrit/5004006
-alias tmux='tmux new-session -t s \; set destroy-unattached'
-
-diffc() { colordiff -u "$@" | diff-highlight | less -FR }
+diffc() {
+	colordiff -u "$@" | diff-highlight | less -FR
+}
 
 qpdf-merge() {
 	out="$1";	shift
-	qpdf --linearize --empty --pages "$@" -- $out }
+	qpdf --linearize --empty --pages "$@" -- $out
+}
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
 
 true # To start the shell with a zero exit code
