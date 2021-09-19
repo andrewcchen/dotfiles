@@ -101,7 +101,7 @@ alias makepkg='makepkg -Cc'
 
 tmuxs() {
 	# https://gist.github.com/chakrit/5004006
-	local sname=s
+	local sname=${1:-s}
 	for i in {1..99}; do
 		if ! \tmux ls 2>&1 | grep -q "$sname-$i:"'.*(attached)'; then
 			if \tmux ls 2>&1 | grep -q "$sname-$i:"; then
