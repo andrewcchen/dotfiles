@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/qt/plugins/kded_touchpad.so
+
+[Action]
+Description = Removing kded_touchpad.so
+When = PostTransaction
+Exec = /usr/bin/rm /usr/lib/qt/plugins/kded_touchpad.so

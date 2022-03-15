@@ -1,10 +1,10 @@
 [Trigger]
-Type = File
+Type = Package
 Operation = Install
 Operation = Upgrade
-Target = usr/lib/qt/plugins/kcm_mouse.so
+Target = plasma-desktop
 
 [Action]
 Description = Removing kcm_mouse.so
 When = PostTransaction
-Exec = /usr/bin/rm /usr/lib/qt/plugins/kcm_mouse.so
+Exec = /usr/bin/rm /usr/lib/qt/plugins/plasma/kcms/systemsettings/kcm_mouse.so /usr/lib/qt/plugins/plasma/kcminit/kcm_mouse_init.so

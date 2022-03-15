@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = cura
+
+[Action]
+Description = Removing problematic cura plugins
+When = PostTransaction
+Exec = /usr/bin/rm -r /usr/lib/cura/plugins/UFPReader /usr/lib/cura/plugins/UFPWriter

@@ -24,6 +24,7 @@ set nolist "list disables linebreak
 set nomodeline
 
 set mouse=a
+set ttymouse=sgr
 
 set vb t_vb= "no visual bell & flash
 
@@ -58,3 +59,5 @@ noremap <buffer> <silent> j gj
 call Preamble#Enable('c,cpp,python')
 nnoremap <Leader>fp :call Preamble#Fold()<CR>
 set foldmethod=marker
+
+nnoremap <Leader>f :Fern<Space>-drawer<Space>

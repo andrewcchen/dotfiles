@@ -7,7 +7,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 autoload -Uz compinit
 compinit
 
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory

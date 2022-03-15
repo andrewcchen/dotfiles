@@ -25,3 +25,6 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/fern.vim"]
+	path = vim/bundle/fern.vim
+	url = https://github.com/lambdalisue/fern.vim.git
