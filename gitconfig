@@ -6,14 +6,7 @@
 [color]
 	ui = auto
 [alias]
-	m = merge --no-ff --log
-	c = commit
-	a = add -A
-	b = branch
-	s = status
-	ck = checkout
-	st = status
-	lg = log --oneline --graph --decorate
+	push-force = push --force-with-lease
 [pager]
 	log = diff-highlight | less -FR
 	show = diff-highlight | less -FR
