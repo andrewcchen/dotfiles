@@ -3,8 +3,6 @@
 	name = Andrew Chen
 [push]
 	default = current
-[core]
-	excludesfile = ~/.gitignore
 [color]
 	ui = auto
 [alias]
