@@ -6,7 +6,7 @@ sname=${1:-s}
 
 tmuxls=$(tmux ls)
 
-for i in {0..99}; do
+for i in {1..99}; do
 	if ! grep -q "^$sname-$i:.*(attached)" <<< "$tmuxls"; then
 		if grep -q "^$sname-$i:" <<< "$tmuxls"; then
 			exec tmux attach-session -t $sname-$i
