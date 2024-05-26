@@ -15,7 +15,7 @@
 	s = status
 	ck = checkout
 	st = status
-	lg = log --all --oneline --graph --decorate
+	lg = log --oneline --graph --decorate
 [pager]
 	log = diff-highlight | less -FR
 	show = diff-highlight | less -FR
@@ -25,4 +25,4 @@
 [diff]
 	algorithm = patience
 [init]
-	defaultBranch = master
+	defaultBranch = main

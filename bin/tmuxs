@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# https://gist.github.com/chakrit/5004006
+
+sname=${1:-s}
+
+tmuxls=$(tmux ls)
+
+for i in {0..99}; do
+	if ! grep -q "^$sname-$i:.*(attached)" <<< "$tmuxls"; then
+		if grep -q "^$sname-$i:" <<< "$tmuxls"; then
+			exec tmux attach-session -t $sname-$i
+		else
+			exec tmux new-session -t $sname -s $sname-$i
+		fi
+	fi
+done
+
+echo >&2 "Too many sessions"

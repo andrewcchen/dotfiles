@@ -99,21 +99,6 @@ alias grep='grep --color=auto'
 alias less='less -R'
 alias makepkg='makepkg -Cc'
 
-tmuxs() {
-	# https://gist.github.com/chakrit/5004006
-	local sname=${1:-s}
-	for i in {1..99}; do
-		if ! \tmux ls 2>&1 | grep -q "$sname-$i:"'.*(attached)'; then
-			if \tmux ls 2>&1 | grep -q "$sname-$i:"; then
-				\tmux attach-session -t $sname-$i
-			else
-				\tmux new-session -t $sname -s $sname-$i
-			fi
-			break
-		fi
-	done
-}
-
 diffc() {
 	colordiff -u "$@" | diff-highlight | less -FR
 }
