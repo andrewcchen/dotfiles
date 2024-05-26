@@ -56,8 +56,4 @@ cmap w!! w !sudo tee > /dev/null %
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
 
-call Preamble#Enable('c,cpp,python')
-nnoremap <Leader>fp :call Preamble#Fold()<CR>
-set foldmethod=marker
-
 nnoremap <Leader>f :Fern<Space>-drawer<Space>
