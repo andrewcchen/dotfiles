@@ -11,17 +11,11 @@
     - ~/.config/fontconfig/conf.d
 
 - link:
-    ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
-    ~/.profile: profile
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vim/vimrc
-    ~/.zprofile: zprofile
-    ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
 
     ~/.config/fontconfig/conf.d/99-fonts.conf: fontconfig/conf.d/99-fonts.conf
 
